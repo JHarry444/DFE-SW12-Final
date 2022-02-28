@@ -2,6 +2,7 @@ package com.qa.enums;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Scanner;
 
 public class App {
 
@@ -26,9 +27,15 @@ public class App {
 
 		System.out.println(ld);
 
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("HEADS, TAILS or EDGE");
+
+		String option = scan.nextLine().trim().toUpperCase();
+
 		CoinFlipper flipper = new CoinFlipper();
 		for (int i = 0; i < 100; i++)
-			System.out.println(flipper.flipCoin(CoinFlip.TAILS));
+			System.out.println(flipper.flipCoin(CoinFlip.valueOf(option)));
 	}
 
 }

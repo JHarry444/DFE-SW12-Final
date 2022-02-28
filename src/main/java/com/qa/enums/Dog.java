@@ -20,4 +20,8 @@ public class Dog {
 		this.name = name;
 	}
 
+	public int getAge() {
+		return this.age;
+	}
+
 }
