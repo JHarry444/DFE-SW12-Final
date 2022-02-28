@@ -9,15 +9,19 @@ public class RPSGame {
 	public Result play(RPS player) {
 		if (player == null)
 			return null;
-		int num = rand.nextInt(3); // 0, 1, 2
+		int num = rand.nextInt(RPS.values().length); // 0, 1, 2
 
-		RPS cpu = null;
-		if (num == 0)
-			cpu = RPS.ROCK;
-		else if (num == 1)
-			cpu = RPS.SCISSORS;
-		else
-			cpu = RPS.PAPER;
+		RPS cpu = RPS.values()[num];
+
+//		int num = rand.nextInt(3); // 0, 1, 2
+//
+//		RPS cpu = null;
+//		if (num == 0)
+//			cpu = RPS.ROCK;
+//		else if (num == 1)
+//			cpu = RPS.SCISSORS;
+//		else
+//			cpu = RPS.PAPER;
 
 		System.out.println("CPU: " + cpu);
 
