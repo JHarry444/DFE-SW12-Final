@@ -21,24 +21,7 @@ public class RPSGame {
 
 		System.out.println("CPU: " + cpu);
 
-		if (cpu == player)
-			return Result.DRAW;
-		else if (player == RPS.ROCK) {
-			if (cpu == RPS.SCISSORS)
-				return Result.WIN;
-			else
-				return Result.LOSE;
-		} else if (player == RPS.PAPER) {
-			if (cpu == RPS.SCISSORS)
-				return Result.LOSE;
-			else
-				return Result.WIN;
-		} else {
-			if (cpu == RPS.PAPER)
-				return Result.WIN;
-			else
-				return Result.LOSE;
-		}
+		return player.beats(cpu);
 
 	}
 }
