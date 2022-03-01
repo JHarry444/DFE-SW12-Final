@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RPSGame {
 
-	private Random rand = new Random();
+	private Random rand = new Random(); // dependency
 
 	public Result play(RPS player) {
 		if (player == null)

@@ -55,6 +55,8 @@ public class TestCoinFlip {
 		Mockito.when(this.rand.nextInt(101)).thenReturn(49);
 
 		assertEquals(true, this.flipper.flipCoin(CoinFlip.HEADS));
+
+		Mockito.verify(this.rand, Mockito.times(1)).nextInt(101);
 	}
 
 	@Test
@@ -62,6 +64,8 @@ public class TestCoinFlip {
 		Mockito.when(this.rand.nextInt(101)).thenReturn(99);
 
 		assertEquals(true, this.flipper.flipCoin(CoinFlip.TAILS));
+
+		Mockito.verify(this.rand, Mockito.times(1)).nextInt(101);
 	}
 
 }
