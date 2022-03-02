@@ -8,12 +8,16 @@ public class UserInput {
 
 	private static Scanner scanner = new Scanner(System.in);
 
+	public static Integer getInt() {
+		return getInt(null);
+	}
+
 	public static Integer getInt(NumberValidator validator) {
 		Integer i = null;
 		do {
 			try {
 				i = Integer.parseInt(scanner.nextLine());
-				if (!validator.validate(i)) {
+				if (validator != null && !validator.validate(i)) {
 					i = null;
 					System.out.println("Please enter a valid number!");
 				}
