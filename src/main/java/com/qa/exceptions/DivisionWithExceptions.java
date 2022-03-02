@@ -17,6 +17,8 @@ public class DivisionWithExceptions {
 				System.out.println(divider.divide(a, b));
 			} catch (ArithmeticException ae) {
 				System.out.println("Plz don't divide by zero");
+			} catch (NumberTooBigException ntbe) {
+				System.out.println("ERROR - Second number was bigger than first");
 			} catch (Exception e) {
 				System.out.println("ERROR: " + e.getMessage());
 			}
