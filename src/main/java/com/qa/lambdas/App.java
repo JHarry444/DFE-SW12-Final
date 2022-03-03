@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.qa.exceptions.UserInput;
 
-public class App {
+public class App extends Object {
 
 	public static void main(String[] args) {
 		Function printOld = new FunctionImpl();
@@ -54,6 +54,31 @@ public class App {
 
 		NumberValidator isEvenNewOneLine = (i) -> i % 2 == 0;
 		NumberValidator isEvenNewOneParameter = i -> i % 2 == 0;
+
+		int factor = 3;
+		NumberValidator isMultipleOf = i -> i % factor == 0;
+
+		Calculation addition = (a, b) -> a + b;
+		System.out.println(addition.calculate(12, 6));
+		Calculation subtraction = new Calculation() {
+			@Override
+			public double calculate(double a, double b) {
+				return a - b;
+			}
+		};
+		Calculation multiplication = (a, b) -> a * b;
+		Calculation division = (a, b) -> a / b;
+		System.out.println(division.calculate(12, 0));
+
+		Calculation powers = (a, b) -> Math.pow(a, b);
+		Calculation powersReference = Math::pow; // shortcut for previous line
+		Calculation powersOld = new Calculation() {
+			@Override
+			public double calculate(double a, double b) {
+				return Math.pow(a, b);
+			}
+		};
+		System.out.println(powers.calculate(3, 2));
 	}
 
 }
