@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class App {
 
 	public static void main(String[] args) {
-		List<Integer> nums = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		List<Integer> nums = List.of(1_000, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 		nums.forEach(num -> System.out.println(num));
 		nums.forEach(System.out::println);
