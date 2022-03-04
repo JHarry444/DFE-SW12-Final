@@ -3,6 +3,7 @@ package com.qa.jdbc;
 public class App {
 
 	public static void main(String[] args) {
+		// game Data Access Object
 		GameDAO game = new GameDAO("jdbc:mysql://localhost:3306/dfe_sw12", "root", "pass");
 
 		System.out.println(game.readGames());
@@ -22,7 +23,9 @@ public class App {
 
 		System.out.println(game.readGames());
 
+		// print out all games published by sony
 		game.readGames().stream().filter(g -> g.getPublisher().equals("Sony")).forEach(System.out::println);
+
 	}
 
 }

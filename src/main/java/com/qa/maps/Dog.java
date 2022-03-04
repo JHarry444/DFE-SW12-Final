@@ -17,6 +17,10 @@ public class Dog extends Pet {
 		this.breed = breed;
 	}
 
+	public void bark() {
+		System.out.println("w00f");
+	}
+
 	@Override
 	public String toString() {
 		return "Dog [breed=" + this.breed + ", name=" + this.getName() + "]";
