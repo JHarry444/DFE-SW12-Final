@@ -12,11 +12,15 @@ public class UserInput {
 		return getInt(null);
 	}
 
+	public static String getString() {
+		return scanner.nextLine();
+	}
+
 	public static Integer getInt(NumberValidator validator) {
 		Integer i = null;
 		do {
 			try {
-				i = Integer.parseInt(scanner.nextLine());
+				i = Integer.parseInt(getString());
 				if (validator != null && !validator.validate(i)) {
 					i = null;
 					System.out.println("Please enter a valid number!");

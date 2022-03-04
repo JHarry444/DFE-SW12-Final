@@ -1,61 +1,28 @@
 package com.qa.jdbc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public class App {
 
 	public static void main(String[] args) {
-		final String url = "jdbc:mysql://localhost:3306/dfe_sw12";
-		final String user = "root";
-		final String password = "pass";
-		final String SELECT = "SELECT * from `game`;";
+		GameDAO game = new GameDAO("jdbc:mysql://localhost:3306/dfe_sw12", "root", "pass");
 
-		// try-with-resources (auto-closes anything in the () )
-		try (Connection conn = DriverManager.getConnection(url, user, password);
-				Statement stmt = conn.createStatement();) {
-			ResultSet results = stmt.executeQuery(SELECT);
+		System.out.println(game.readGames());
+		game.createGame("Tales of Arise", "Bandai Namco", "PS5");
 
-			while (results.next()) {
-				Integer id = results.getInt(1); // col indexes start at 1
-				String name = results.getString(2);
-				String pub = results.getString(3);
-				String plat = results.getString(4);
-				System.out.println("ID: " + id + " Name: " + name + " Pub: " + pub + " Plat: " + plat);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		System.out.println(game.readGames());
+		game.createGame("DMC 5 Special Edition", "Capcom", "PS5");
 
-		final String name = "Pokemon Arceus";
-		final String INSERT = "INSERT INTO `game` (`name`, `publisher`, `platform`) VALUES (?, ?, ?);";
-		try (Connection conn = DriverManager.getConnection(url, user, password);
-				PreparedStatement stmt = conn.prepareStatement(INSERT);) {
-			stmt.setString(1, name);
-			stmt.setString(2, "Nintendo");
-			stmt.setString(3, "Switch");
+		System.out.println(game.readGames());
+		game.createGame("Ghost of Tsushima", "Sony", "PS5");
 
-			stmt.executeUpdate(INSERT);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		System.out.println(game.readGames());
+		game.updateGame("Deep Rock Galactic", "Ghost Ship Games?", "PS5", 3);
 
-		final int id = 2;
-		final String DELETE = "DELETE FROM `game` WHERE `id` = ?;";
+		System.out.println(game.readGames());
+		game.deleteGame(2);
 
-		try (Connection conn = DriverManager.getConnection(url, user, password);
-				PreparedStatement stmt = conn.prepareStatement(DELETE)) {
-			stmt.setInt(1, id);
+		System.out.println(game.readGames());
 
-			stmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
+		game.readGames().stream().filter(g -> g.getPublisher().equals("Sony")).forEach(System.out::println);
 	}
 
 }
