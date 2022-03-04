@@ -1,5 +1,7 @@
 package com.qa.exceptions;
 
+import com.qa.lambdas.UserInput;
+
 public class DivisionWithExceptions {
 
 	public static void main(String[] args) {

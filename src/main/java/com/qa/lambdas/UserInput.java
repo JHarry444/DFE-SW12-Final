@@ -1,8 +1,6 @@
-package com.qa.exceptions;
+package com.qa.lambdas;
 
 import java.util.Scanner;
-
-import com.qa.lambdas.NumberValidator;
 
 public class UserInput {
 
