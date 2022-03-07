@@ -1,40 +1,45 @@
 package com.qa.generics;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.qa.maps.Dog;
 import com.qa.maps.Pet;
-import com.qa.maps.Spider;
 
 public class App {
 
 	public static void main(String[] args) {
-
-		List<Integer> nums = List.of(2, 4, 6, 8, 10);
-
-		Integer i = nums.get(0);
-
-		List<String> strings = List.of("A", "B", "C");
-		String s = strings.get(0);
-
-		List<?> list = new ArrayList<>(); // unusable list
-
-		Cage<Dog> kennel = new Cage<>();
-		kennel.setPet(new Dog("Rex", "Alsation"));
-		Dog d = kennel.getPet();
-		d.bark();
+		Dog rex = new Dog("Rex", "Alsation");
+		PetCage kennel = new PetCage(rex);
 //		kennel.setPet(new Spider("Spinny", false));
-		Cage<Spider> cage = new Cage<>();
-		cage.setPet(new Spider("Spinny", false));
-//		cage.setPet(new Dog("Rex", "Alsation"));
-//		Cage<String> cg;
+		Pet dog = kennel.getPet();
+		if (dog instanceof Dog)
+			((Dog) dog).bark(); // tells java that 'dog' is a Dog
+		else
+			System.out.println("Defo not a dog");
 
-		PetCage kennel2 = new PetCage(new Dog("Spot", "Dalmation"));
-		Pet p = kennel2.getPet();
-		Dog d2 = (Dog) p; // cast pet -> dog
-		d2.bark();
-		// kennel2.setP(new Spider("Charlotte", false));
+		Dog spot = new Dog("Spot", "Dalmation");
+		GenericCage<Dog> betterKennel = new GenericCage<Dog>(spot);
+
+//		betterKennel.setPet(new Spider("Spinny", false));
+
+		Dog dog2 = betterKennel.getPet();
+
+		dog2.bark();
+
+		List<Integer> nums = List.of(1, 2, 3, 4, 5);
+
+		List<String> words = List.of("Hello", "World!");
+
+		for (String s : words) {
+			if (s.endsWith("!"))
+				System.out.println(s);
+		}
+
+		List<Dog> pets = List.of(rex, spot);
+
+		for (Dog d : pets) {
+			d.bark();
+		}
 	}
 
 }

@@ -4,19 +4,19 @@ import com.qa.maps.Pet;
 
 public class PetCage {
 
-	private Pet pet;
+	private Pet p;
 
 	public PetCage(Pet p) {
 		super();
-		this.pet = p;
+		this.p = p;
 	}
 
 	public Pet getPet() {
-		return this.pet;
+		return this.p;
 	}
 
-	public void setP(Pet p) {
-		this.pet = p;
+	public void setPet(Pet p) {
+		this.p = p;
 	}
 
 }
