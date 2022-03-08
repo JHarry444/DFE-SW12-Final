@@ -3,7 +3,7 @@ package com.qa.lambdas;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrimeValidator implements NumberValidator {
+public class PrimeValidator implements Validator<Integer> {
 
 	@Override
 	public boolean validate(Integer num) {

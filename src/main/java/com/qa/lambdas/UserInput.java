@@ -11,10 +11,24 @@ public class UserInput {
 	}
 
 	public static String getString() {
-		return scanner.nextLine();
+		return getString(null);
 	}
 
-	public static Integer getInt(NumberValidator validator) {
+	public static String getString(Validator<String> validator) {
+		String s = null;
+		do {
+			s = scanner.nextLine();
+			if (validator != null && !validator.validate(s)) {
+				s = null;
+				System.out.println("Please enter a valid string!");
+			}
+
+		} while (s == null);
+
+		return s;
+	}
+
+	public static Integer getInt(Validator<Integer> validator) {
 		Integer i = null;
 		do {
 			try {
