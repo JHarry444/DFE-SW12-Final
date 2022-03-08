@@ -3,6 +3,8 @@ package com.qa.lambdas;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class App extends Object {
 
@@ -91,6 +93,8 @@ public class App extends Object {
 		System.out.println(new ArrayList<>() instanceof List);
 		System.out.println(new LinkedList<>() instanceof List);
 
+		IntStream.range(1, 101).forEach(System.out::println);
+		Stream.of(1, 2, 3, 4).reduce((acc, next) -> Math.max(acc, next));
 	}
 
 }
